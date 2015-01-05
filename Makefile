@@ -1,5 +1,5 @@
 all: rapport.tex ref.bib
 	pdflatex rapport
-	# bibtex rapport
+	bibtex rapport
 	pdflatex rapport
 	pdflatex rapport
