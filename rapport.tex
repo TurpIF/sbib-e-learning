@@ -66,14 +66,87 @@ Pour personnaliser et fiabiliser les résultats de recherche pour un
 utilisateur, le contexte et les données utilisateurs sont acquis et modifie le
 rang des éléments. \\
 
-\subsection{Modélisation du contexte}
-
 Le besoin de modéliser proprement et strictement ce genre d'information est
 donc devenu nécessaire. Beaucoup de chercheurs étudient et publient des papiers
 sur la notion de contexte et sur sa définition la plus exacte possible
 \cite{DBLP:journals/tlt/VerbertMOWDBD12},
 \cite{DBLP:reference/rsh/AdomaviciusT11},
 \cite{DBLP:journals/aim/AdomaviciusMRT11}. \\
+
+\subsection{Connaissance et acquisition du contexte}
+
+Chaque attributs formant le contexte doit avoir sa méthode d'acquisition, de
+mise à jour (s'il y en a une) et sa "valeur par défaut" lors de données
+manquantes. En effet, toutes ces caractéristiques peuvent être statique ou
+dynamique et observable ou peu voir non observable
+\cite{DBLP:journals/aim/AdomaviciusMRT11}. Le tableau
+\ref{tab:update_observability_context} reprend les caractéristique possible
+pour un attribut de contexte. \\
+
+\begin{table}
+  \caption{\label{tab:update_observability_context} Information sur le contexte \cite{DBLP:journals/aim/AdomaviciusMRT11}}
+  \begin{tabular}{|p{0.20\linewidth}|p{0.20\linewidth}|p{0.20\linewidth}|p{0.20\linewidth}|}
+    \hline
+    ~ & Totalement observable & Partiellement observable & Non observable \\ \hline
+    Statique & Connaissance totale & Connaissance partielle et statique & Connaissance latente \\ \hline
+    Dynamique & Connaissance totale dynamique & Connaissance partielle et dynamique & Aucune connaissance \\ \hline
+  \end{tabular}
+\end{table}
+
+Les attributs statiques sont des simplifications que le système peut se
+permettre car la donnée est considérée comme figé dans le temps le long de
+l'utilisation de l'application par un utilisateur. Par exemple une date de
+naissance, une identité sont des données fixe pour un utilisateur. Lorsque ces
+attributs sont pleinement observables, le système peut considérer les connaître
+entièrement. C'est les meilleurs cas possibles. S'ils sont partiellement
+observable ou peu ou non observable, alors cela implique un retard dans
+l'obtention des données plus ou moins grand en fonction de l'observabilité des
+attributs. Cependant une fois totalement observés, le système connaît ces
+attributs. \\
+
+Les attributs dynamiques sont des données mesurées ayant une certaine durée de
+vie. Cette durée dépend de la nature de l'attribut. La localisation
+géographique de l'utilisateur n'a pas besoin d'être précise au mètre près. Ce
+type d'attribut n'est donc pas à mesurer très frequement et comporte une durée
+de vie plutôt importante. Mais l'horloge tout simplement est une donnée à
+mesurer chaque seconde par définition. Ces différentes mesures deviennent
+possible et une large gamme de type d'attribut peut être obtenu par les
+nouvelles technologies inclusent dans les téléphone et appareils portables
+\cite{DBLP:conf/wstst/Kurti08}. \\
+
+Lorsque les attributs ont des valeurs dynamiques, l'observabilité totale permet
+d'avoir une connaissance de toute la dynamique de la dimension et donc
+d'utiliser avec beaucoup plus de précision cette information. On peut dire que
+l'observabilité est totale si le temps d'acquisition de la mesure est plus
+petit que sa durée de vie. Cette granularité est à définir par le designer de
+l'application en fonction de l'usage fait. Un temps d'acquisition plus lent
+entraînera alors une observabilité que partielle. La dynamique de l'information
+ne pourra être totalement connue et le système devra s'adapter avec des données
+manquantes ou anciennes. Pour certains types, les valeurs manquantes peuvent
+être inférées et connu \cite{DBLP:journals/prl/TruccoFR99}. Il est à noter
+qu'il y a différents niveau d'observabilité partielle. Ces différences ne sont
+pas examiner dans cette synthèse. Lorsque la mesure est non observable, aucune
+connaissance ne peut être obtenu et le système doit pouvoir fonctionner avec ce
+manque. \\
+
+Il existe deux types de dynamique pour les attributs : dynamique passive et
+explicite. \\
+Un attribut passivement dynamique peut changer sans agissement
+directe de l'utilisateur. En effet, dans le cas d'une géolocalisation,
+l'utilisateur n'a pas besoin d'agir directement sur les appareils mobiles pour
+changer sa position. Cette valeur est mesuré automatiquement par des capteurs
+de positionnement, comme le Global Positionning System (GPS) ou le Wi-Fi
+\cite{DBLP:journals/tlt/VerbertMOWDBD12}. \\
+Les attributs dont la valeur change via l'action directe de l'utilisateur sont
+considérés comme dynamique explicite. C'est le cas en général pour toutes les
+informations utilisateurs. Cela peut également correspondre à d'autres types de
+données comme des filtres et des préférences que l'utilisateur décrit sur
+l'application. Ces données sont, de plus, totalement observables et permettent,
+dans le cas des filtres et préférences, d'affiner encore plus les résultats de
+recherche proposés. Cela accroit donc l'efficacité de l'application quant au
+ciblage. \\
+
+\subsection{Les différents types de contexte}
 
 La notion de contexte a été étudier dans différentes sciences (psychologie,
 intelligence artificielle, modélisation cognitive, ...) et chacune de ces
@@ -84,42 +157,65 @@ nous baserons principalement sur un nombre fini d'aspects et d'attributs les
 plus utilisés dans le cadre des applications de recommendation avec contexte
 pour le e-learning. \\
 
-
-\subsubsection{Connaissance et acquisition du contexte}
+\subsubsection{Ordinateur et appareils mobiles}
 ~\\
-Chaque attributs formant le contexte doit avoir sa méthode d'acquisition, de
-mise à jour (s'il y en a une) et sa "valeur par défaut" lors de données
-manquantes. En effet, toutes ces caractéristiques peuvent être statique ou
-dynamique et observable ou peu voir non observable
-\cite{DBLP:journals/aim/AdomaviciusMRT11}. Le tableau
-\ref{tab:update_observability_context} reprend les caractéristique possible
-pour un attribut de contexte. \\
+Connaître les outils qu'à l'utilisateur et utile pour le système de
+recommandation. En effet, celui-ci peut ainsi savoir ce qu'il peut recommander.
+Cela concerne les capacités réseaux, matérielles et logicielles. \\
 
-\begin{table}
-  \caption{\label{tab:update_observability_context} Information sur le contexte}
-  \begin{tabular}{|p{0.20\linewidth}|p{0.20\linewidth}|p{0.20\linewidth}|p{0.20\linewidth}|}
-    \hline
-    ~ & Totalement observable & Partiellement observable & Non observable \\ \hline
-    Statique & Connaissance totale & Connaissance partielle et statique & Connaissance latent \\ \hline
-    Dynamique & Connaissance totale dynamique & Connaissance partielle et dynamique & Aucune connaissance \\ \hline
-  \end{tabular}
-\end{table}
+Au niveau réseau, l'application peut proposer du contenu externe comme des
+documents, des vidéos, des supports de présentation ou tout simplement des
+pages web. \\
 
-Les attributs statiques sont des simplifications que le système peut se
-permettre car la donnée est considéré comme figé dans le temps le long de
-l'utilisation de l'application par un utilisateur. Par exemple une date de
-naissance, une identité sont des données fixe pour un utilisateur. Lorsque ces
-attributs sont pleinement observables, le système peut considérer les connaître
-entièrement. C'est les meilleurs cas possibles. S'ils sont partiellement
-observable ou peu ou non observable, alors cela implique un retard dans
-l'obtention des données plus ou moins grand en fonction de l'observabilité des
-attributs. Cependant une fois totalement observés, le système connaît ces
-attributs. \\
+La capacité matérielle et surtout la différence entre ordinateur et appareils
+mobiles est une connaissance importante. Un ordinateur est un outils plus
+puissant avec plus de mémoire. L'application peut proposer à l'utilisateur
+d'utiliser des logiciels tournant sur ordinateur, ou peut présenter des pages
+web lourdes (visualisation 3D par exemple) et peut aussi sugérer un
+téléchargement de contenu. \\
+Un appareil mobile, même si elle est moins puissante et a moins d'espace de
+stockage, possède en revanche une quantité croissante de capteurs utilisable
+pour compléter les résultats de recommendation \cite{DBLP:conf/wstst/Kurti08}.
+Egalement la présentation de l'application ne sera pas fait de la même manière
+sur un ordinateur et sur un appareil mobile à cause de la taille de l'écran. \\
+
+Enfin la connaissance des capacités logicielles permet de rafiner les résultats
+en soumettant uniquement des recommendations utilisables pour l'utilisateur.
+Par exemple des fichiers \emph{Microsoft Office} ne peuvent pas être ouvert sur
+toutes les plateformes. \\
+
+\subsubsection{Géolocalisation}
+~\\
+
+\subsubsection{Temps}
+~\\
+
+\subsubsection{Activité}
+~\\
+
+\subsubsection{Ressources}
+~\\
 
 \subsubsection{Utilisateur}
 ~\\
 Pour fiabiliser les résultats de recherche pour un utilisateur, le système doit
 prendre en compte les informations de l'utilisateur. \\
+
+\subsubsection{Relations sociales}
+~\\
+
+\subsection{Représentation et modélisation du contexte}
+
+\subsection{Algorithmes de recommendations contextuelles}
+
+\subsubsection{Pré-filtre contextuel}
+~\\
+
+\subsubsection{Post-filtre contextuel}
+~\\
+
+\subsubsection{Utilisation directe du contexte}
+~\\
 
 \section{Application spécifique dans le domaine du e-learning}
 ~\\
