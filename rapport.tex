@@ -96,7 +96,7 @@ dynamique et observable ou peu voir non observable
 pour un attribut de contexte. \\
 
 \begin{table}
-  \caption{\label{tab:update_observability_context} Information sur le contexte}
+  \caption{\label{tab:update_observability_context} Information sur le contexte \cite{DBLP:journals/aim/AdomaviciusMRT11}}
   \begin{tabular}{|p{0.20\linewidth}|p{0.20\linewidth}|p{0.20\linewidth}|p{0.20\linewidth}|}
     \hline
     ~ & Totalement observable & Partiellement observable & Non observable \\ \hline
@@ -135,9 +135,28 @@ l'application en fonction de l'usage fait. Un temps d'acquisition plus lent
 entraînera alors une observabilité que partielle. La dynamique de l'information
 ne pourra être totalement connue et le système devra s'adapter avec des données
 manquantes ou anciennes. Pour certains types, les valeurs manquantes peuvent
-être inférées et connu \cite{DBLP:journals/prl/TruccoFR99}. Lorsque la mesure
-est non observable, aucune connaissance ne peut être obtenu et le système doit
-pouvoir fonctionner avec ce manque. \\
+être inférées et connu \cite{DBLP:journals/prl/TruccoFR99}. Il est à noter
+qu'il y a différents niveau d'observabilité partielle. Ces différences ne sont
+pas examiner dans cette synthèse. Lorsque la mesure est non observable, aucune
+connaissance ne peut être obtenu et le système doit pouvoir fonctionner avec ce
+manque. \\
+
+Il existe deux types de dynamique pour les attributs : dynamique passive et
+explicite. \\
+Un attribut passivement dynamique peut changer sans agissement
+directe de l'utilisateur. En effet, dans le cas d'une géolocalisation,
+l'utilisateur n'a pas besoin d'agir directement sur les appareils mobiles pour
+changer sa position. Cette valeur est mesuré automatiquement par des capteurs
+de positionnement, comme le Global Positionning System (GPS) ou le Wi-Fi
+\cite{DBLP:journals/tlt/VerbertMOWDBD12}. \\
+Les attributs dont la valeur change via l'action directe de l'utilisateur sont
+considérés comme dynamique explicite. C'est le cas en général pour toutes les
+informations utilisateurs. Cela peut également correspondre à d'autres types de
+données comme des filtres et des préférences que l'utilisateur décrit sur
+l'application. Ces données sont, de plus, totalement observables et permettent,
+dans le cas des filtres et préférences, d'affiner encore plus les résultats de
+recherche proposés. Cela accroit donc l'efficacité de l'application quant au
+ciblage. \\
 
 \subsubsection{Utilisateur}
 ~\\
