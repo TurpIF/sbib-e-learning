@@ -100,13 +100,13 @@ pour un attribut de contexte. \\
   \begin{tabular}{|p{0.20\linewidth}|p{0.20\linewidth}|p{0.20\linewidth}|p{0.20\linewidth}|}
     \hline
     ~ & Totalement observable & Partiellement observable & Non observable \\ \hline
-    Statique & Connaissance totale & Connaissance partielle et statique & Connaissance latent \\ \hline
+    Statique & Connaissance totale & Connaissance partielle et statique & Connaissance latente \\ \hline
     Dynamique & Connaissance totale dynamique & Connaissance partielle et dynamique & Aucune connaissance \\ \hline
   \end{tabular}
 \end{table}
 
 Les attributs statiques sont des simplifications que le système peut se
-permettre car la donnée est considéré comme figé dans le temps le long de
+permettre car la donnée est considérée comme figé dans le temps le long de
 l'utilisation de l'application par un utilisateur. Par exemple une date de
 naissance, une identité sont des données fixe pour un utilisateur. Lorsque ces
 attributs sont pleinement observables, le système peut considérer les connaître
@@ -115,6 +115,29 @@ observable ou peu ou non observable, alors cela implique un retard dans
 l'obtention des données plus ou moins grand en fonction de l'observabilité des
 attributs. Cependant une fois totalement observés, le système connaît ces
 attributs. \\
+
+Les attributs dynamiques sont des données mesurées ayant une certaine durée de
+vie. Cette durée dépend de la nature de l'attribut. La localisation
+géographique de l'utilisateur n'a pas besoin d'être précise au mètre près. Ce
+type d'attribut n'est donc pas à mesurer très frequement et comporte une durée
+de vie plutôt importante. Mais l'horloge tout simplement est une donnée à
+mesurer chaque seconde par définition. Ces différentes mesures deviennent
+possible et une large gamme de type d'attribut peut être obtenu par les
+nouvelles technologies inclusent dans les téléphone et appareils portables
+\cite{DBLP:conf/wstst/Kurti08}. \\
+
+Lorsque les attributs ont des valeurs dynamiques, l'observabilité totale permet
+d'avoir une connaissance de toute la dynamique de la dimension et donc
+d'utiliser avec beaucoup plus de précision cette information. On peut dire que
+l'observabilité est totale si le temps d'acquisition de la mesure est plus
+petit que sa durée de vie. Cette granularité est à définir par le designer de
+l'application en fonction de l'usage fait. Un temps d'acquisition plus lent
+entraînera alors une observabilité que partielle. La dynamique de l'information
+ne pourra être totalement connue et le système devra s'adapter avec des données
+manquantes ou anciennes. Pour certains types, les valeurs manquantes peuvent
+être inférées et connu \cite{DBLP:journals/prl/TruccoFR99}. Lorsque la mesure
+est non observable, aucune connaissance ne peut être obtenu et le système doit
+pouvoir fonctionner avec ce manque. \\
 
 \subsubsection{Utilisateur}
 ~\\
