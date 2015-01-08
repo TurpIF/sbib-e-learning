@@ -1,5 +1,6 @@
 \documentclass[conference]{./sty/IEEEtran}
 % \documentclass[a4]{article}
+\renewcommand{\baselinestretch}{1.15}
 
 % pour les accents utilisés en français
 \usepackage[utf8]{inputenc}
@@ -10,6 +11,8 @@
 \usepackage[a4paper,pagebackref,bookmarksnumbered]{hyperref} % ps2pdf
 % pour inclure joliment un algorithme
 \usepackage{algorithmic}
+\usepackage[pdftex]{graphicx}
+\usepackage{cite}
 
 \usepackage{array}
 \usepackage{booktabs}
@@ -27,11 +30,16 @@
 \author{
 \IEEEauthorblockN{Jérémy Edert, Mathis Paul, Pierre Turpin}
 \IEEEauthorblockA{INSA de Lyon}
+  % Jérémy Edert, \\
+  % Mathis Paul, \\
+  % Pierre Turpin
 }
 
 \maketitle
+\newpage
 
 \tableofcontents
+\newpage
 
 \section{Introduction}
 
@@ -80,6 +88,7 @@ dynamique et observable ou peu voir non observable
 pour un attribut de contexte. \\
 
 \begin{table}
+  \centering
   \caption{\label{tab:update_observability_context} Information sur le contexte \cite{DBLP:journals/aim/AdomaviciusMRT11}}
   \begin{tabular}{|p{0.20\linewidth}|p{0.20\linewidth}|p{0.20\linewidth}|p{0.20\linewidth}|}
     \hline
@@ -153,6 +162,14 @@ nous baserons principalement sur un nombre fini d'aspects et d'attributs les
 plus utilisés dans le cadre des applications de recommendation avec contexte
 pour le e-learning. \\
 
+La figure \ref{fig:context} reprend les différents éléments de contexte décrit dans cette section. \\
+
+\begin{figure}[tb]
+  \centering
+  \caption{\label{fig:context} Modélisation des attributs de contexte \cite{DBLP:journals/tlt/VerbertMOWDBD12}}
+  \includegraphics[width=0.5\textwidth]{context}
+\end{figure}
+
 \subsubsection{Ordinateur et appareils mobiles}
 ~\\
 Connaître les outils qu'à l'utilisateur et utile pour le système de
@@ -194,7 +211,24 @@ toutes les plateformes. \\
 
 \subsubsection{Utilisateur}
 ~\\
-La modélisation du profil de l'élève est un élément fondamental des systèmes d'e-learning avec personnalisation. L'étude \cite{DBLP:journals/tlt/VerbertMOWDBD12} s'attache à décrire de façon extensive les différentes catégories d'informations qu'il est intéressant de prendre en compte dans ce genre de programme.Outre les informations basiques comme le nom, l'e-mail, les langues pratiquées ou l'age, les connaisances de utilisateur sont un point important à considérer. Il est par ailleurs possible de modéliser celles-ci avec plus ou moins de précision, par exemple en définissant pour chaque utilisateur un niveau de compétence pour chaque compétence identifiée par l'application\cite{DBLP:journals/jucs/SternKHKL10}. Un profil utilisateur peut également comporter des informations relatives à ses intérêts, ses objectifs d'aprentissage, notamment si la plate-forme d'e-learning concerne un cursus scolaire comme dans le cas d'une université où ceux-ci sont clairement définis. La méthode d'apprentissage de l'utilisateur  est aussi une information importante et peut permettre de proposer un contenu de formation adapté aux différents styles d'apprentissage \citesmartECourseRecommander}. 
+La modélisation du profil de l'élève est un élément fondamental des systèmes
+d'e-learning avec personnalisation. L'étude
+\cite{DBLP:journals/tlt/VerbertMOWDBD12} s'attache à décrire de façon extensive
+les différentes catégories d'informations qu'il est intéressant de prendre en
+compte dans ce genre de programme.Outre les informations basiques comme le nom,
+l'e-mail, les langues pratiquées ou l'age, les connaisances de utilisateur sont
+un point important à considérer. Il est par ailleurs possible de modéliser
+celles-ci avec plus ou moins de précision, par exemple en définissant pour
+chaque utilisateur un niveau de compétence pour chaque compétence identifiée
+par l'application\cite{DBLP:journals/jucs/SternKHKL10}. \\
+
+Un profil utilisateur peut également comporter des informations relatives à ses
+intérêts, ses objectifs d'aprentissage, notamment si la plate-forme
+d'e-learning concerne un cursus scolaire comme dans le cas d'une université où
+ceux-ci sont clairement définis. La méthode d'apprentissage de l'utilisateur
+est aussi une information importante et peut permettre de proposer un contenu
+de formation adapté aux différents styles d'apprentissage
+\cite{smartECourseRecommander}. \\
 
 \subsubsection{Relations sociales}
 ~\\
@@ -202,38 +236,209 @@ La modélisation du profil de l'élève est un élément fondamental des systèm
 \subsection{Représentation et modélisation du contexte}
 
 \subsection{Algorithmes de recommandations contextuelles}
-~\\D'un point de vue algorithmique, les méthodes utilisées pour personnaliser l'expérience utilisateur dans le cadre du e-learning sont très diverses. Elles font intervenir des paramètres de contexte différents, et se répartissent globalement entre celles-faisant appel à des algorithmes de recherche avec filtrage contextuel ou reposant uniquement sur des éléments issus directement de la modélisation contextuelle.
+
+D'un point de vue algorithmique, les méthodes utilisées pour personnaliser
+l'expérience utilisateur dans le cadre du e-learning sont très diverses. Elles
+font intervenir des paramètres de contexte différents, et se répartissent
+globalement entre celles-faisant appel à des algorithmes de recherche avec
+filtrage contextuel ou reposant uniquement sur des éléments issus directement
+de la modélisation contextuelle. \\
+
+La figure \ref{fig:algos} reprend les différents algorithmes de filtre
+existants utilisant le contexte. \\
+
+\begin{figure*}[tb]
+  \centering
+  \caption{\label{fig:algos} Paradigme d'incorporation du contexte dans les systèmes de recommendation \cite{DBLP:journals/aim/AdomaviciusMRT11}}
+  \includegraphics[width=\textwidth]{algo}
+\end{figure*}
+
+\subsubsection{Pre-filtre contextuel}
+~\\
 
 \subsubsection{Post-filtre contextuel}
-~\\Le post filtrage contextuelle consiste à filtrer les résultats d'un algorithme de recommandation classique à l'aide d'inforations issues du contexte\cite{DBLP:journals/tlt/VerbertMOWDBD12}. Il s'agit souvent d'adapter ceux-ci de manière à incorporer des vecteurs de préférence utilisateur. Les algorithmes de recommandation se délinent en deux principales catégories, le filtrage collaboratif et le filtrage sur contenu.\\
-~\\\Le filtrage collaboratif désigne de façon générale les méthodes recommandant du contenu à un utilisateur à partir d'informations issues du contexte du comportement d'autres utilisateurs. Il s'agit de rechercher des clusters d'utilisateurs aux comportements similaires susceptibles d'apprécier les mêmes contenus, afin de pouvoir recommander à un membre du groupe ce que les autres aiment déjà. La préférence d'un utilisateur pour un item peut être déterminée de différentes manière. Elle l'est soit de manière implicite via une action d'évaluation de l'utilisateur. Dans le cas des systèmes de e-learning, cela peut par exemple prendre la forme d'un formulaire de feedback ou d'un système de vote. Elle aussi être déterminée indirectement, simplement par le fait qu'un utilisateur consulte ou non une ressource. ~\ \cite{Liou:2014:CPL:2617848.2617854} utilise par exemple les données issues du système de  e-learning des internes d'un hôpital pour répartir les utilisateurs en groupes afin de recommander de manière efficace des actions à effectuer sur la plate-forme. Cette solution telle qu'elle est présentée comporte cependant l'inconvénient de n'avoir été testée que sur des données d'archive et non en temps réel.Peu d'informations sont précisées quant aux données utilises dans l'étude, notamment concernant leur taille. 
-~\\Les méthodes de filtrage basées sur le contenu reposent principalement sur une modélisation des items à recommander ainsi que sur des profils utilisateurs plus complets. \cite{DBLP:journals/jucs/SternKHKL10} présente par exemple une méthode pour associer différents mots-clefs à des articles en vue de les recommander à des utilisateurs avec lesquels les intérêts déterminés par l'application correspondraient. 
+~\\
+Le post filtrage contextuelle consiste à filtrer les résultats d'un algorithme
+de recommandation classique à l'aide d'inforations issues du
+contexte\cite{DBLP:journals/tlt/VerbertMOWDBD12}. Il s'agit souvent d'adapter
+ceux-ci de manière à incorporer des vecteurs de préférence utilisateur. Les
+algorithmes de recommandation se délinent en deux principales catégories, le
+filtrage collaboratif et le filtrage sur contenu. \\
+
+Le filtrage collaboratif désigne de façon générale les méthodes recommandant du
+contenu à un utilisateur à partir d'informations issues du contexte du
+comportement d'autres utilisateurs. Il s'agit de rechercher des clusters
+d'utilisateurs aux comportements similaires susceptibles d'apprécier les mêmes
+contenus, afin de pouvoir recommander à un membre du groupe ce que les autres
+aiment déjà. La préférence d'un utilisateur pour un item peut être déterminée
+de différentes manière. Elle l'est soit de manière implicite via une action
+d'évaluation de l'utilisateur. Dans le cas des systèmes de e-learning, cela
+peut par exemple prendre la forme d'un formulaire de feedback ou d'un système
+de vote. Elle aussi être déterminée indirectement, simplement par le fait qu'un
+utilisateur consulte ou non une ressource. \\
+\cite{Liou:2014:CPL:2617848.2617854} utilise par exemple les données issues du
+système de  e-learning des internes d'un hôpital pour répartir les utilisateurs
+en groupes afin de recommander de manière efficace des actions à effectuer sur
+la plate-forme. Cette solution telle qu'elle est présentée comporte cependant
+l'inconvénient de n'avoir été testée que sur des données d'archive et non en
+temps réel.Peu d'informations sont précisées quant aux données utilises dans
+l'étude, notamment concernant leur taille.  \\
+
+Les méthodes de filtrage basées sur le contenu reposent principalement sur
+une modélisation des items à recommander ainsi que sur des profils utilisateurs
+plus complets. \cite{DBLP:journals/jucs/SternKHKL10} présente par exemple une
+méthode pour associer différents mots-clefs à des articles en vue de les
+recommander à des utilisateurs avec lesquels les intérêts déterminés par
+l'application correspondraient. \\
 
 \subsubsection{Utilisation directe du contexte}
-~\\Certaines solutions se reposent directement sur des événements contextuels  pour proposer du contenu à celui-ci. Les types d'algorithmes utilisés varient alors considérablement d'une solution à l'autre. La solution de formation en entreprise APOSDLE utilise par exemple une représentation à base d'ontologie pour représenter les taches effectuées par un utilisateur lors de son travail habituel ainsi que les compétences nécessaires pour les mener à bien\cite{DBLP:journals/procedia/BehamKLL10}. Cette démarche consiste donc à modéliser précisément les taches qu'ont à effectuer les différents collaborateurs d'une entreprise utilisateurs de la solution ainsi que les compétences qu'elles mettent en jeu. Les relations entre taches et compétences sont également modélisées. L'application est capable d'évaluer le niveau de compétence de chaque utilisateur par rapport à chacune de ces compétences à partir des interactions de celui-ci avec les applications nécessaires à son travail. L'outil peut alors recommander aux employés des collaborateurs experts dans ces différentes compétences, à même de les aider dans leurs missions. Une approche similaire est mise en place dans la solution d'apprentissage de langues étrangères mobile PALLAS \cite{DBLP:conf/wmte/PetersenM06}. La position de l'utilisateur est utilisée pour afficher des messages personnalisés en fonction notamment de la langue étudiée et du niveau de l'utilisateur pour inciter celui-ci à se rendre sur des points d'intérêt. \cite{Kurti:2008:CMS:1456223.1456331} propose une approche similaire en ce que le contexte utilisateur, notamment sa position, sert d'élément déclencheur à la proposition d'activités d'apprentissage sur une solution mobile. Des méthodes à base d'algorithmes génétiques sont également envisageables. En modélisant les cours en ligne d'une université en tant que suite de sections composées d'objets d'apprentissage de nature différentes, \cite{smartECourseRecommander} recommande par exemple aux auteurs de ces cours des nombres idéaux d'éléments comme des paragraphes, graphiques ou exercices à y ajouter. En constatant l'importance des différents modes d'apprentissage dans la capacité des étudiants à assimiler des connaissances, il y est assumé qu'une variété d'items permette d'adapter les cours à ces différents types d'apprentissage . Cette adéquation aux modes d'apprentissage est mesurée pour chaque section de cour par des indicateurs basés sur la fréquence relative des différents types d'objets les uns par rapport aux autres. Un algorithme génétique est ensuite utilisé pour tester successivement différentes compositions de cours afin d'optimiser leur faculté à être efficaces pour un maximum de méthodes d'apprentissage. 
+~\\
+Certaines solutions se reposent directement sur des événements contextuels
+pour proposer du contenu à celui-ci. Les types d'algorithmes utilisés varient
+alors considérablement d'une solution à l'autre. La solution de formation en
+entreprise APOSDLE utilise par exemple une représentation à base d'ontologie
+pour représenter les taches effectuées par un utilisateur lors de son travail
+habituel ainsi que les compétences nécessaires pour les mener à
+bien\cite{DBLP:journals/procedia/BehamKLL10}. Cette démarche consiste donc à
+modéliser précisément les taches qu'ont à effectuer les différents
+collaborateurs d'une entreprise utilisateurs de la solution ainsi que les
+compétences qu'elles mettent en jeu. Les relations entre taches et compétences
+sont également modélisées. L'application est capable d'évaluer le niveau de
+compétence de chaque utilisateur par rapport à chacune de ces compétences à
+partir des interactions de celui-ci avec les applications nécessaires à son
+travail. L'outil peut alors recommander aux employés des collaborateurs experts
+dans ces différentes compétences, à même de les aider dans leurs missions. \\
+
+Une approche similaire est mise en place dans la solution d'apprentissage de
+langues étrangères mobile PALLAS \cite{DBLP:conf/wmte/PetersenM06}. La position
+de l'utilisateur est utilisée pour afficher des messages personnalisés en
+fonction notamment de la langue étudiée et du niveau de l'utilisateur pour
+inciter celui-ci à se rendre sur des points d'intérêt.
+\cite{Kurti:2008:CMS:1456223.1456331} propose une approche similaire en ce que
+le contexte utilisateur, notamment sa position, sert d'élément déclencheur à la
+proposition d'activités d'apprentissage sur une solution mobile. \\
+
+Des méthodes à base d'algorithmes génétiques sont également envisageables. En
+modélisant les cours en ligne d'une université en tant que suite de sections
+composées d'objets d'apprentissage de nature différentes,
+\cite{smartECourseRecommander} recommande par exemple aux auteurs de ces cours
+des nombres idéaux d'éléments comme des paragraphes, graphiques ou exercices à
+y ajouter. En constatant l'importance des différents modes d'apprentissage dans
+la capacité des étudiants à assimiler des connaissances, il y est assumé qu'une
+variété d'items permette d'adapter les cours à ces différents types
+d'apprentissage. Cette adéquation aux modes d'apprentissage est mesurée pour
+chaque section de cour par des indicateurs basés sur la fréquence relative des
+différents types d'objets les uns par rapport aux autres. Un algorithme
+génétique est ensuite utilisé pour tester successivement différentes
+compositions de cours afin d'optimiser leur faculté à être efficaces pour un
+maximum de méthodes d'apprentissage. \\
 
 \section{Application spécifique dans le domaine du e-learning}
-~\\
+
 \subsection{Les différents types de recommandation}
-	~\\L'intérêt de la personnalisation des plate-formes de e-learning en fonction du contexte utilisateur est de produire de façon générale des solutions de meilleure qualité en rendant l'apprentissage plus efficace. Cette personnalisation s'effectue notamment via des méthodes de recommandation qui se différencient avant tout par la nature des objets recommandés. Des approches très différentes ont en effet été imaginées, différents types de recommandations pouvant être utilisés pour une mêm solution. \\
-	~\\L'approche la plus courante retenue dans la personnalisation de systèmes d'e-learning est la recommandation de ressources d'apprentissage \cite{DBLP:journals/tlt/VerbertMOWDBD12}. Il peut s'agir d'items complémentaires à la formation comme des exemples ou des éléments exercices ayant pour but de faciliter l'apprentissage aux élèves, comme de cours complets susceptibles de les intéresser. \\
-~\\L'on peut également envisager de recommander du contenu non pas à l'étudiant, mais à l'auteur du cours \cite{smartECourseRecommander} dans l'optique que celui-ci soit suffisamment pourvu en ressources variées lui permettant de s'adapter le mieux possible aux différents modes d'apprentissages des lecteurs. \\
-~\\Le postulat que l'aide apportée par des collègues est la meilleure stratégie d'apprentissage sur le lieu de travail a par ailleurs motivé le développement de solutions recommandant à l'utilisateur des collaborateurs experts dans des domaines pour lesquels il manque de connaissances\cite{DBLP:journals/procedia/BehamKLL10}.\\
-~\\Une autre approche parfois employée consiste à générer des messages personnalisés encourageant l'utilisateur à se mettre en situation d'apprentissage. Ce type de solution est notamment utilisé en conjonction sur des plate-formes mobiles. \cite{DBLP:conf/wmte/PetersenM06}. \\
-~\\Dans le contexte d'une plate-forme de e-learning comportant des fonctionnalités d'interaction entre différents utilisateurs, il devient envisageable de suggérer à l'utilisateur d'effectuer de telles activités, comme poster un sujet sur un forum intégré à la plate-forme après la consultation d'une ressource \cite{Liou:2014:CPL:2617848.2617854}.
+
+L'intérêt de la personnalisation des plate-formes de e-learning en fonction du
+contexte utilisateur est de produire de façon générale des solutions de
+meilleure qualité en rendant l'apprentissage plus efficace. Cette
+personnalisation s'effectue notamment via des méthodes de recommandation qui se
+différencient avant tout par la nature des objets recommandés. Des approches
+très différentes ont en effet été imaginées, différents types de
+recommandations pouvant être utilisés pour une mêm solution. \\
+
+L'approche la plus courante retenue dans la personnalisation de systèmes
+d'e-learning est la recommandation de ressources d'apprentissage
+\cite{DBLP:journals/tlt/VerbertMOWDBD12}. Il peut s'agir d'items
+complémentaires à la formation comme des exemples ou des éléments exercices
+ayant pour but de faciliter l'apprentissage aux élèves, comme de cours complets
+susceptibles de les intéresser. \\
+
+L'on peut également envisager de recommander du contenu non pas à
+l'étudiant, mais à l'auteur du cours \cite{smartECourseRecommander} dans
+l'optique que celui-ci soit suffisamment pourvu en ressources variées lui
+permettant de s'adapter le mieux possible aux différents modes d'apprentissages
+des lecteurs. \\
+
+Le postulat que l'aide apportée par des collègues est la meilleure stratégie
+d'apprentissage sur le lieu de travail a par ailleurs motivé le développement
+de solutions recommandant à l'utilisateur des collaborateurs experts dans des
+domaines pour lesquels il manque de
+connaissances\cite{DBLP:journals/procedia/BehamKLL10}.\\
+
+Une autre approche parfois employée consiste à générer des messages
+personnalisés encourageant l'utilisateur à se mettre en situation
+d'apprentissage. Ce type de solution est notamment utilisé en conjonction sur
+des plate-formes mobiles. \cite{DBLP:conf/wmte/PetersenM06}. \\
+
+Dans le contexte d'une plate-forme de e-learning comportant des fonctionnalités
+d'interaction entre différents utilisateurs, il devient envisageable de
+suggérer à l'utilisateur d'effectuer de telles activités, comme poster un sujet
+sur un forum intégré à la plate-forme après la consultation d'une ressource
+\cite{Liou:2014:CPL:2617848.2617854}. \\
 
 \subsection{Evaluation des différentes solutions}
-Il est difficile de comparer les différents systèmes des recommandations proposés par tous ces articles. Il y a plusieurs raisons à cela. Tout d'abord, la plupart d'entre eux ne sont qu'à l'état de prototype et ont peu été testés en situation réelle. D'autre part, les systèmes étudiés portent sur des domaines très variés, et comme on l'a vu plus haut, ils ne recommandent pas tous le même type de ressource. Certains systèmes recommandent des ressources telles que de la documentation ou des exercices, alors que d'autres recommandent des personnes, etc. Enfin, les méthodes et jeux de tests varient grandement d'une étude à l'autre.\\
 
-L'étude de Verbert et al. \cite{DBLP:journals/tlt/VerbertMOWDBD12} soulève ces points et rapporte également quelques résultats de tests. Les évaluations ont pu porter sur l'efficacité des systèmes à améliorer l'apprentissage, sur la pertinence du contenu recommandé, ou encore sur l'utilité et des différents systèmes. La plupart du temps, les systèmes semblent effectivement plus efficaces que des méthodes plus traditionnelles, mais que cela peut dépendre du domaine. La pertinence du contenu a pu être évaluée avec là encore diverses méthodes, la plupart des système évalués renvoyant de meilleurs résultats que des systèmes de filtrage collaboratif classiques. Le sujet de l'utilité du système a semble-t-il été mesuré pour plus de systèmes que les autres points, et là encore avec des méthodes différentes. Si les différentes études rapportent que les différents systèmes ont tous été perçus comme utiles, beaucoup soulèvent également plusieurs problèmes d'ergonomie, et des difficultés d'adaptation de la part des utilisateurs.\\
+Il est difficile de comparer les différents systèmes des recommandations
+proposés par tous ces articles. Il y a plusieurs raisons à cela. Tout d'abord,
+la plupart d'entre eux ne sont qu'à l'état de prototype et ont peu été testés
+en situation réelle. D'autre part, les systèmes étudiés portent sur des
+domaines très variés, et comme on l'a vu plus haut, ils ne recommandent pas
+tous le même type de ressource. Certains systèmes recommandent des ressources
+telles que de la documentation ou des exercices, alors que d'autres
+recommandent des personnes, etc. Enfin, les méthodes et jeux de tests varient
+grandement d'une étude à l'autre. \\
 
-Le problème de l'absence de jeu de données standard est adressé par Draschsler et al. \cite{DBLP:journals/procedia/DrachslerBVVDMBLSFW10}. Les auteurs constatent qu'il n'existe aucun jeu de données pour tester les systèmes de recommandation dans le contexte du e-learning -alors qu'il en existe pour les systèmes commerciaux- et que le fait de créer des jeux de données standard permettrait d'assurer la validité des expériences en favorisant la répétabilité des tests. Ils soulignent la disparité des différents contextes d'apprentissage, notamment d'une part les solutions s'adressant aux élèves intégrés à un cursus formel comme une université par exemple, et d'autre part les élèves apprenant en dehors du cadre d'un tel cursus.\\
-Les auteurs proposent également plusieurs lignes de conduite à tenir lors du choix des données : sélectionner des données représentatives des véritables conditions d'utilisation, sélectionner des jeux de données concernant suffisamment d'utilisateurs, et créer des jeux de données comparables les uns aux autres, et donc partageant une structure similaire. Les auteurs introduisent ensuite une approche générale pour créer les jeux de données, étudient l'aspect juridique de la question quant à la protection de la vie privée, et proposent un format standard d'échange des jeux de données.\\
+L'étude de Verbert et al. \cite{DBLP:journals/tlt/VerbertMOWDBD12} soulève ces
+points et rapporte également quelques résultats de tests. Les évaluations ont
+pu porter sur l'efficacité des systèmes à améliorer l'apprentissage, sur la
+pertinence du contenu recommandé, ou encore sur l'utilité et des différents
+systèmes. La plupart du temps, les systèmes semblent effectivement plus
+efficaces que des méthodes plus traditionnelles, mais que cela peut dépendre du
+domaine. La pertinence du contenu a pu être évaluée avec là encore diverses
+méthodes, la plupart des système évalués renvoyant de meilleurs résultats que
+des systèmes de filtrage collaboratif classiques. Le sujet de l'utilité du
+système a semble-t-il été mesuré pour plus de systèmes que les autres points,
+et là encore avec des méthodes différentes. Si les différentes études
+rapportent que les différents systèmes ont tous été perçus comme utiles,
+beaucoup soulèvent également plusieurs problèmes d'ergonomie, et des
+difficultés d'adaptation de la part des utilisateurs.\\
 
+Le problème de l'absence de jeu de données standard est adressé par Draschsler
+et al. \cite{DBLP:journals/procedia/DrachslerBVVDMBLSFW10}. Les auteurs
+constatent qu'il n'existe aucun jeu de données pour tester les systèmes de
+recommandation dans le contexte du e-learning -alors qu'il en existe pour les
+systèmes commerciaux- et que le fait de créer des jeux de données standard
+permettrait d'assurer la validité des expériences en favorisant la répétabilité
+des tests. Ils soulignent la disparité des différents contextes
+d'apprentissage, notamment d'une part les solutions s'adressant aux élèves
+intégrés à un cursus formel comme une université par exemple, et d'autre part
+les élèves apprenant en dehors du cadre d'un tel cursus.\\
 
+Les auteurs proposent également plusieurs lignes de conduite à tenir lors du
+choix des données : sélectionner des données représentatives des véritables
+conditions d'utilisation, sélectionner des jeux de données concernant
+suffisamment d'utilisateurs, et créer des jeux de données comparables les uns
+aux autres, et donc partageant une structure similaire. Les auteurs
+introduisent ensuite une approche générale pour créer les jeux de données,
+étudient l'aspect juridique de la question quant à la protection de la vie
+privée, et proposent un format standard d'échange des jeux de données.\\
 
 \section{Conclusion}
-Les plate-formes de e-learning couvrent des contextes d'apprentissage différents, des cursus scolaires aux formations en entreprise, leur diversité rend nécessaire l'adoption d'autant d'aproches de personalisations différentes, nécessité exacerbée par un besoin d'accès mobile aux formations croissant. Chaque utilisateur ayant des connaissances et des façons d'apprendre différentes, il est d'autant plus pertinent d'adapter ces plate-formes pour produire des applications plus efficacent prenant en compte des paramètres tels que la position de l'utilisateur, sa formation ou ses habitudes d'apprentissage.  La personnalisation de ces systèmes peut aussi bien se faire en recommandant du contenu que des personnes de référence, tant aux professeurs responsables de ces contenus qu'aux élèves. De nombreuses solutions ont été développées pour adresser ces besoins, leur diversité rendant cependant la tache de comparer leurs résultats d'autant plus ardue. La personnalisation des systèmes d'e-learning soulève un certain nombre de challenges, que ne facilite pas la difficulté de la mise en place de référentiels de données communs.
+
+Les plate-formes de e-learning couvrent des contextes d'apprentissage
+différents, des cursus scolaires aux formations en entreprise, leur diversité
+rend nécessaire l'adoption d'autant d'aproches de personalisations différentes,
+nécessité exacerbée par un besoin d'accès mobile aux formations croissant.
+Chaque utilisateur ayant des connaissances et des façons d'apprendre
+différentes, il est d'autant plus pertinent d'adapter ces plate-formes pour
+produire des applications plus efficacent prenant en compte des paramètres tels
+que la position de l'utilisateur, sa formation ou ses habitudes
+d'apprentissage.  La personnalisation de ces systèmes peut aussi bien se faire
+en recommandant du contenu que des personnes de référence, tant aux professeurs
+responsables de ces contenus qu'aux élèves. De nombreuses solutions ont été
+développées pour adresser ces besoins, leur diversité rendant cependant la
+tache de comparer leurs résultats d'autant plus ardue. La personnalisation des
+systèmes d'e-learning soulève un certain nombre de challenges, que ne facilite
+pas la difficulté de la mise en place de référentiels de données communs.
 
 % references section
 
