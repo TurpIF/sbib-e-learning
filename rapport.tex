@@ -47,19 +47,19 @@ Le e-learning se développe de façon importante dans un grand nombre de
 domaines, notamment en entreprise pour la formation continue des personnels.
 Dans le cadre du projet de synthèse bibliographique, nous cherchons à étudier
 et comparer les différentes solutions existantes dans le domaine des systèmes
-de recommendation appliqués au e-learning. \\
+de recommandation appliqués au e-learning. \\
 
-L'ensemble des fiches de lecture ci-jointent en annexe nous a permis d'établir
-cette synthèse et résument les papiers de recherche lues. Ces articles ont été
-repris de différentes conférence et journaux et se concentre sur les trois
-thèmes principaux que nous aborderont : la recherche de contenu, l'utilisation
+L'ensemble des fiches de lecture ci-jointes en annexe nous a permis d'établir
+cette synthèse et résument les papiers de recherche lus. Ces articles ont été
+repris de différentes conférences et journaux et se concentrent sur les trois
+thèmes principaux que nous aborderons : la recherche de contenu, l'utilisation
 du contexte et des informations de l'utilisateur lors du ciblage, puis
 l'application dans le domaine du e-learning. \\
 
 La plupart des articles lus et résumés sont tirés des références de
 \cite{DBLP:journals/tlt/VerbertMOWDBD12}. En effet ce dernier regroupe déjà
 beaucoup de résultats et de méthodes de recherche contextuelle de documents
-pédagogique pour du e-learning. \\
+pédagogiques pour du e-learning. \\
 
 % TODO bullshiter un peu plus
 
@@ -67,7 +67,7 @@ pédagogique pour du e-learning. \\
 \section{Utilisation du contexte et des informations de l'utilisateur lors du ciblage}
 
 Pour personnaliser et fiabiliser les résultats de recherche pour un
-utilisateur, le contexte et les données utilisateurs sont acquis et modifie le
+utilisateur, le contexte et les données utilisateur sont acquis et modifient le
 rang des éléments. \\
 
 Le besoin de modéliser proprement et strictement ce genre d'information est
@@ -79,12 +79,12 @@ sur la notion de contexte et sur sa définition la plus exacte possible
 
 \subsection{Connaissance et acquisition du contexte}
 
-Chaque attributs formant le contexte doit avoir sa méthode d'acquisition, de
+Chaque attribut formant le contexte doit avoir sa méthode d'acquisition, de
 mise à jour (s'il y en a une) et sa "valeur par défaut" lors de données
-manquantes. En effet, toutes ces caractéristiques peuvent être statique ou
-dynamique et observable ou peu voir non observable
+manquantes. En effet, toutes ces caractéristiques peuvent être statiques ou
+dynamiques, et observables ou peu voire non observables
 \cite{DBLP:journals/aim/AdomaviciusMRT11}. Le tableau
-\ref{tab:update_observability_context} reprend les caractéristique possible
+\ref{tab:update_observability_context} reprend les caractéristiques possibles
 pour un attribut de contexte. \\
 
 \begin{table}
@@ -99,12 +99,12 @@ pour un attribut de contexte. \\
 \end{table}
 
 Les attributs statiques sont des simplifications que le système peut se
-permettre car la donnée est considérée comme figé dans le temps le long de
+permettre car la donnée est considérée comme figée dans le temps le long de
 l'utilisation de l'application par un utilisateur. Par exemple une date de
-naissance, une identité sont des données fixe pour un utilisateur. Lorsque ces
+naissance, une identité sont des données fixes pour un utilisateur. Lorsque ces
 attributs sont pleinement observables, le système peut considérer les connaître
-entièrement. C'est les meilleurs cas possibles. S'ils sont partiellement
-observable ou peu ou non observable, alors cela implique un retard dans
+entièrement. Ce sont les meilleurs cas possibles. S'ils sont partiellement
+observables ou peu ou non observables, alors cela implique un retard dans
 l'obtention des données plus ou moins grand en fonction de l'observabilité des
 attributs. Cependant une fois totalement observés, le système connaît ces
 attributs. \\
@@ -112,11 +112,11 @@ attributs. \\
 Les attributs dynamiques sont des données mesurées ayant une certaine durée de
 vie. Cette durée dépend de la nature de l'attribut. La localisation
 géographique de l'utilisateur n'a pas besoin d'être précise au mètre près. Ce
-type d'attribut n'est donc pas à mesurer très frequement et comporte une durée
+type d'attribut n'est donc pas à mesurer très fréquemment et comporte une durée
 de vie plutôt importante. Mais l'horloge tout simplement est une donnée à
 mesurer chaque seconde par définition. Ces différentes mesures deviennent
-possible et une large gamme de type d'attribut peut être obtenu par les
-nouvelles technologies inclusent dans les téléphone et appareils portables
+possible et une large gamme de type d'attribut peut être obtenue par les
+nouvelles technologies incluses dans les téléphones et appareils portables
 \cite{DBLP:conf/wstst/Kurti08}. \\
 
 Lorsque les attributs ont des valeurs dynamiques, l'observabilité totale permet
@@ -125,21 +125,21 @@ d'utiliser avec beaucoup plus de précision cette information. On peut dire que
 l'observabilité est totale si le temps d'acquisition de la mesure est plus
 petit que sa durée de vie. Cette granularité est à définir par le designer de
 l'application en fonction de l'usage fait. Un temps d'acquisition plus lent
-entraînera alors une observabilité que partielle. La dynamique de l'information
+entraînera alors une observabilité seulement partielle. La dynamique de l'information
 ne pourra être totalement connue et le système devra s'adapter avec des données
 manquantes ou anciennes. Pour certains types, les valeurs manquantes peuvent
-être inférées et connu \cite{DBLP:journals/prl/TruccoFR99}. Il est à noter
-qu'il y a différents niveau d'observabilité partielle. Ces différences ne sont
+être inférées et connues \cite{DBLP:journals/prl/TruccoFR99}. Il est à noter
+qu'il y a différents niveaux d'observabilité partielle. Ces différences ne sont
 pas examiner dans cette synthèse. Lorsque la mesure est non observable, aucune
-connaissance ne peut être obtenu et le système doit pouvoir fonctionner avec ce
+connaissance ne peut être obtenue et le système doit pouvoir fonctionner avec ce
 manque. \\
 
 Il existe deux types de dynamique pour les attributs : dynamique passive et
 explicite. \\
 Un attribut passivement dynamique peut changer sans agissement
-directe de l'utilisateur. En effet, dans le cas d'une géolocalisation,
+direct de l'utilisateur. En effet, dans le cas d'une géolocalisation,
 l'utilisateur n'a pas besoin d'agir directement sur les appareils mobiles pour
-changer sa position. Cette valeur est mesuré automatiquement par des capteurs
+changer sa position. Cette valeur est mesurée automatiquement par des capteurs
 de positionnement, comme le Global Positionning System (GPS) ou le Wi-Fi
 \cite{DBLP:journals/tlt/VerbertMOWDBD12}. \\
 Les attributs dont la valeur change via l'action directe de l'utilisateur sont
@@ -153,16 +153,16 @@ ciblage. \\
 
 \subsection{Les différents types de contexte}
 
-La notion de contexte a été étudier dans différentes sciences (psychologie,
+La notion de contexte a été étudiée dans différentes sciences (psychologie,
 intelligence artificielle, modélisation cognitive, ...) et chacune de ces
-sciences expriment un point de vue différents
+sciences exprime un point de vue différent
 \cite{DBLP:reference/rsh/AdomaviciusT11}. C'est pourquoi nous ne pouvons pas
 donner une liste exhaustive des éléments pouvant définir cette notion. Nous
 nous baserons principalement sur un nombre fini d'aspects et d'attributs les
-plus utilisés dans le cadre des applications de recommendation avec contexte
+plus utilisés dans le cadre des applications de recommandation avec contexte
 pour le e-learning. \\
 
-La figure \ref{fig:context} reprend les différents éléments de contexte décrit dans cette section. \\
+La figure \ref{fig:context} reprend les différents éléments de contexte décrits dans cette section. \\
 
 \begin{figure}[tb]
   \centering
@@ -172,29 +172,29 @@ La figure \ref{fig:context} reprend les différents éléments de contexte décr
 
 \subsubsection{Ordinateur et appareils mobiles}
 ~\\
-Connaître les outils qu'à l'utilisateur et utile pour le système de
+Connaître les outils que possède l'utilisateur et utile pour le système de
 recommandation. En effet, celui-ci peut ainsi savoir ce qu'il peut recommander.
-Cela concerne les capacités réseaux, matérielles et logicielles. \\
+Cela concerne les capacités réseau, matérielles et logicielles. \\
 
 Au niveau réseau, l'application peut proposer du contenu externe comme des
 documents, des vidéos, des supports de présentation ou tout simplement des
 pages web. \\
 
-La capacité matérielle et surtout la différence entre ordinateur et appareils
-mobiles est une connaissance importante. Un ordinateur est un outils plus
+La capacité matérielle -et surtout la différence entre ordinateur et appareil
+mobile- est une connaissance importante. Un ordinateur est un outil plus
 puissant avec plus de mémoire. L'application peut proposer à l'utilisateur
 d'utiliser des logiciels tournant sur ordinateur, ou peut présenter des pages
-web lourdes (visualisation 3D par exemple) et peut aussi sugérer un
+web lourdes (visualisation 3D par exemple) et peut aussi suggérer un
 téléchargement de contenu. \\
-Un appareil mobile, même si elle est moins puissante et a moins d'espace de
-stockage, possède en revanche une quantité croissante de capteurs utilisable
-pour compléter les résultats de recommendation \cite{DBLP:conf/wstst/Kurti08}.
-Egalement la présentation de l'application ne sera pas fait de la même manière
+Un appareil mobile, même s'il est moins puissant et a moins d'espace de
+stockage, possède en revanche une quantité croissante de capteurs utilisables
+pour compléter les résultats de recommandation \cite{DBLP:conf/wstst/Kurti08}.
+La présentation de l'application ne sera pas non plus faite de la même manière
 sur un ordinateur et sur un appareil mobile à cause de la taille de l'écran. \\
 
-Enfin la connaissance des capacités logicielles permet de rafiner les résultats
-en soumettant uniquement des recommendations utilisables pour l'utilisateur.
-Par exemple des fichiers \emph{Microsoft Office} ne peuvent pas être ouvert sur
+Enfin la connaissance des capacités logicielles permet de raffiner les résultats
+en soumettant uniquement des recommandations utilisables pour l'utilisateur.
+Par exemple des fichiers \emph{Microsoft Office} ne peuvent pas être ouverts sur
 toutes les plateformes. \\
 
 \subsubsection{Géolocalisation}
@@ -216,14 +216,14 @@ d'e-learning avec personnalisation. L'étude
 \cite{DBLP:journals/tlt/VerbertMOWDBD12} s'attache à décrire de façon extensive
 les différentes catégories d'informations qu'il est intéressant de prendre en
 compte dans ce genre de programme.Outre les informations basiques comme le nom,
-l'e-mail, les langues pratiquées ou l'age, les connaisances de utilisateur sont
+l'e-mail, les langues pratiquées ou l'âge, les connaissances de utilisateur sont
 un point important à considérer. Il est par ailleurs possible de modéliser
 celles-ci avec plus ou moins de précision, par exemple en définissant pour
 chaque utilisateur un niveau de compétence pour chaque compétence identifiée
 par l'application\cite{DBLP:journals/jucs/SternKHKL10}. \\
 
 Un profil utilisateur peut également comporter des informations relatives à ses
-intérêts, ses objectifs d'aprentissage, notamment si la plate-forme
+intérêts, ses objectifs d'apprentissage, notamment si la plate-forme
 d'e-learning concerne un cursus scolaire comme dans le cas d'une université où
 ceux-ci sont clairement définis. La méthode d'apprentissage de l'utilisateur
 est aussi une information importante et peut permettre de proposer un contenu
@@ -240,7 +240,7 @@ de formation adapté aux différents styles d'apprentissage
 D'un point de vue algorithmique, les méthodes utilisées pour personnaliser
 l'expérience utilisateur dans le cadre du e-learning sont très diverses. Elles
 font intervenir des paramètres de contexte différents, et se répartissent
-globalement entre celles-faisant appel à des algorithmes de recherche avec
+globalement entre celles faisant appel à des algorithmes de recherche avec
 filtrage contextuel ou reposant uniquement sur des éléments issus directement
 de la modélisation contextuelle. \\
 
@@ -249,7 +249,7 @@ existants utilisant le contexte. \\
 
 \begin{figure*}[tb]
   \centering
-  \caption{\label{fig:algos} Paradigme d'incorporation du contexte dans les systèmes de recommendation \cite{DBLP:journals/aim/AdomaviciusMRT11}}
+  \caption{\label{fig:algos} Paradigme d'incorporation du contexte dans les systèmes de recommandation \cite{DBLP:journals/aim/AdomaviciusMRT11}}
   \includegraphics[width=\textwidth]{algo}
 \end{figure*}
 
@@ -258,11 +258,11 @@ existants utilisant le contexte. \\
 
 \subsubsection{Post-filtre contextuel}
 ~\\
-Le post filtrage contextuelle consiste à filtrer les résultats d'un algorithme
-de recommandation classique à l'aide d'inforations issues du
+Le post filtrage contextuel consiste à filtrer les résultats d'un algorithme
+de recommandation classique à l'aide d'informations issues du
 contexte\cite{DBLP:journals/tlt/VerbertMOWDBD12}. Il s'agit souvent d'adapter
 ceux-ci de manière à incorporer des vecteurs de préférence utilisateur. Les
-algorithmes de recommandation se délinent en deux principales catégories, le
+algorithmes de recommandation se déclinent en deux principales catégories, le
 filtrage collaboratif et le filtrage sur contenu. \\
 
 Le filtrage collaboratif désigne de façon générale les méthodes recommandant du
@@ -271,7 +271,7 @@ comportement d'autres utilisateurs. Il s'agit de rechercher des clusters
 d'utilisateurs aux comportements similaires susceptibles d'apprécier les mêmes
 contenus, afin de pouvoir recommander à un membre du groupe ce que les autres
 aiment déjà. La préférence d'un utilisateur pour un item peut être déterminée
-de différentes manière. Elle l'est soit de manière implicite via une action
+de différentes manières. Elle l'est soit de manière explicite via une action 
 d'évaluation de l'utilisateur. Dans le cas des systèmes de e-learning, cela
 peut par exemple prendre la forme d'un formulaire de feedback ou d'un système
 de vote. Elle aussi être déterminée indirectement, simplement par le fait qu'un
@@ -281,7 +281,7 @@ système de  e-learning des internes d'un hôpital pour répartir les utilisateu
 en groupes afin de recommander de manière efficace des actions à effectuer sur
 la plate-forme. Cette solution telle qu'elle est présentée comporte cependant
 l'inconvénient de n'avoir été testée que sur des données d'archive et non en
-temps réel.Peu d'informations sont précisées quant aux données utilises dans
+temps réel. Peu d'informations sont précisées quant aux données utilisées dans
 l'étude, notamment concernant leur taille.  \\
 
 Les méthodes de filtrage basées sur le contenu reposent principalement sur
@@ -297,12 +297,12 @@ Certaines solutions se reposent directement sur des événements contextuels
 pour proposer du contenu à celui-ci. Les types d'algorithmes utilisés varient
 alors considérablement d'une solution à l'autre. La solution de formation en
 entreprise APOSDLE utilise par exemple une représentation à base d'ontologie
-pour représenter les taches effectuées par un utilisateur lors de son travail
+pour représenter les tâches effectuées par un utilisateur lors de son travail
 habituel ainsi que les compétences nécessaires pour les mener à
 bien\cite{DBLP:journals/procedia/BehamKLL10}. Cette démarche consiste donc à
-modéliser précisément les taches qu'ont à effectuer les différents
+modéliser précisément les tâches qu'ont à effectuer les différents
 collaborateurs d'une entreprise utilisateurs de la solution ainsi que les
-compétences qu'elles mettent en jeu. Les relations entre taches et compétences
+compétences qu'elles mettent en jeu. Les relations entre tâches et compétences
 sont également modélisées. L'application est capable d'évaluer le niveau de
 compétence de chaque utilisateur par rapport à chacune de ces compétences à
 partir des interactions de celui-ci avec les applications nécessaires à son
@@ -327,7 +327,7 @@ y ajouter. En constatant l'importance des différents modes d'apprentissage dans
 la capacité des étudiants à assimiler des connaissances, il y est assumé qu'une
 variété d'items permette d'adapter les cours à ces différents types
 d'apprentissage. Cette adéquation aux modes d'apprentissage est mesurée pour
-chaque section de cour par des indicateurs basés sur la fréquence relative des
+chaque section de cours par des indicateurs basés sur la fréquence relative des
 différents types d'objets les uns par rapport aux autres. Un algorithme
 génétique est ensuite utilisé pour tester successivement différentes
 compositions de cours afin d'optimiser leur faculté à être efficaces pour un
@@ -343,7 +343,7 @@ meilleure qualité en rendant l'apprentissage plus efficace. Cette
 personnalisation s'effectue notamment via des méthodes de recommandation qui se
 différencient avant tout par la nature des objets recommandés. Des approches
 très différentes ont en effet été imaginées, différents types de
-recommandations pouvant être utilisés pour une mêm solution. \\
+recommandations pouvant être utilisés pour une même solution. \\
 
 L'approche la plus courante retenue dans la personnalisation de systèmes
 d'e-learning est la recommandation de ressources d'apprentissage
@@ -394,7 +394,7 @@ pertinence du contenu recommandé, ou encore sur l'utilité et des différents
 systèmes. La plupart du temps, les systèmes semblent effectivement plus
 efficaces que des méthodes plus traditionnelles, mais que cela peut dépendre du
 domaine. La pertinence du contenu a pu être évaluée avec là encore diverses
-méthodes, la plupart des système évalués renvoyant de meilleurs résultats que
+méthodes, la plupart des systèmes évalués renvoyant de meilleurs résultats que
 des systèmes de filtrage collaboratif classiques. Le sujet de l'utilité du
 système a semble-t-il été mesuré pour plus de systèmes que les autres points,
 et là encore avec des méthodes différentes. Si les différentes études
@@ -426,18 +426,18 @@ privée, et proposent un format standard d'échange des jeux de données.\\
 
 Les plate-formes de e-learning couvrent des contextes d'apprentissage
 différents, des cursus scolaires aux formations en entreprise, leur diversité
-rend nécessaire l'adoption d'autant d'aproches de personalisations différentes,
+rend nécessaire l'adoption d'autant d'approches de personnalisations différentes,
 nécessité exacerbée par un besoin d'accès mobile aux formations croissant.
 Chaque utilisateur ayant des connaissances et des façons d'apprendre
 différentes, il est d'autant plus pertinent d'adapter ces plate-formes pour
-produire des applications plus efficacent prenant en compte des paramètres tels
+produire des applications plus efficaces prenant en compte des paramètres tels
 que la position de l'utilisateur, sa formation ou ses habitudes
 d'apprentissage.  La personnalisation de ces systèmes peut aussi bien se faire
 en recommandant du contenu que des personnes de référence, tant aux professeurs
 responsables de ces contenus qu'aux élèves. De nombreuses solutions ont été
 développées pour adresser ces besoins, leur diversité rendant cependant la
-tache de comparer leurs résultats d'autant plus ardue. La personnalisation des
-systèmes d'e-learning soulève un certain nombre de challenges, que ne facilite
+tâche de comparer leurs résultats d'autant plus ardue. La personnalisation des
+systèmes d'e-learning soulève un certain nombre de challenges, que ne facilitent
 pas la difficulté de la mise en place de référentiels de données communs.
 
 % references section
